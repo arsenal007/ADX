@@ -1,0 +1,68 @@
+** Drc report for /home/arsenal/HAM_Elektronik/low_cost_SDR 1/sch_pcb_KiCad_0805/LCSDR.kicad_pcb **
+** Created on 2016-09-29 11:26:46 **
+
+** Found 20 DRC errors **
+ErrType(19): Pad near pad
+    @ (46,600 mm,34,000 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O4
+    @ (49,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O4
+ErrType(19): Pad near pad
+    @ (46,600 mm,119,000 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O1
+    @ (49,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O1
+ErrType(19): Pad near pad
+    @ (47,303 mm,32,303 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O4
+    @ (49,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O4
+ErrType(19): Pad near pad
+    @ (47,303 mm,35,697 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O4
+    @ (49,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O4
+ErrType(19): Pad near pad
+    @ (47,303 mm,117,303 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O1
+    @ (49,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O1
+ErrType(19): Pad near pad
+    @ (47,303 mm,120,697 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O1
+    @ (49,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O1
+ErrType(19): Pad near pad
+    @ (49,000 mm,31,600 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O4
+    @ (49,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O4
+ErrType(19): Pad near pad
+    @ (49,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O4
+    @ (49,000 mm,36,400 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O4
+ErrType(19): Pad near pad
+    @ (49,000 mm,116,600 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O1
+    @ (49,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O1
+ErrType(19): Pad near pad
+    @ (49,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O1
+    @ (49,000 mm,121,400 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O1
+ErrType(19): Pad near pad
+    @ (138,600 mm,34,000 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O3
+    @ (141,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O3
+ErrType(19): Pad near pad
+    @ (138,600 mm,119,000 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O2
+    @ (141,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O2
+ErrType(19): Pad near pad
+    @ (139,303 mm,32,303 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O3
+    @ (141,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O3
+ErrType(19): Pad near pad
+    @ (139,303 mm,35,697 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O3
+    @ (141,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O3
+ErrType(19): Pad near pad
+    @ (139,303 mm,117,303 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O2
+    @ (141,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O2
+ErrType(19): Pad near pad
+    @ (139,303 mm,120,697 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O2
+    @ (141,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O2
+ErrType(19): Pad near pad
+    @ (141,000 mm,31,600 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O3
+    @ (141,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O3
+ErrType(19): Pad near pad
+    @ (141,000 mm,34,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O3
+    @ (141,000 mm,36,400 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O3
+ErrType(19): Pad near pad
+    @ (141,000 mm,116,600 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O2
+    @ (141,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O2
+ErrType(19): Pad near pad
+    @ (141,000 mm,119,000 mm): Pad 1 on F.Cu, B.Cu, Internal, Non-copper of O2
+    @ (141,000 mm,121,400 mm): Pad on F.Cu, B.Cu, Internal, Non-copper of O2
+
+** Found 0 unconnected pads **
+
+** End of Report **
