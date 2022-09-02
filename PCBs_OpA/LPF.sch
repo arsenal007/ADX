@@ -56,7 +56,7 @@ U 1 1 630B800D
 P 5200 2400
 F 0 "L6" V 5400 2450 50  0000 L CNN
 F 1 "1.32uH" V 5300 2250 50  0000 L CNN
-F 2 "Choke_Axial_ThroughHole:Choke_Horizontal_RM20mm" H 5200 2400 50  0001 C CNN
+F 2 "Choke_Toroid_ThroughHole:Choke_Toroid_6,5x13mm_Vertical" H 5200 2400 50  0001 C CNN
 F 3 "" H 5200 2400 50  0001 C CNN
 	1    5200 2400
 	0    -1   -1   0   
@@ -98,7 +98,7 @@ U 1 1 630B8320
 P 5850 2400
 F 0 "L8" V 6050 2450 50  0000 L CNN
 F 1 "1.72uH" V 5950 2250 50  0000 L CNN
-F 2 "Choke_Axial_ThroughHole:Choke_Horizontal_RM20mm" H 5850 2400 50  0001 C CNN
+F 2 "Choke_Toroid_ThroughHole:Choke_Toroid_6,5x13mm_Vertical" H 5850 2400 50  0001 C CNN
 F 3 "" H 5850 2400 50  0001 C CNN
 	1    5850 2400
 	0    -1   -1   0   
@@ -114,7 +114,7 @@ U 1 1 630B83B3
 P 6500 2400
 F 0 "L10" V 6700 2450 50  0000 L CNN
 F 1 "1.32uH" V 6600 2250 50  0000 L CNN
-F 2 "Choke_Axial_ThroughHole:Choke_Horizontal_RM20mm" H 6500 2400 50  0001 C CNN
+F 2 "Choke_Toroid_ThroughHole:Choke_Toroid_6,5x13mm_Vertical" H 6500 2400 50  0001 C CNN
 F 3 "" H 6500 2400 50  0001 C CNN
 	1    6500 2400
 	0    -1   -1   0   
