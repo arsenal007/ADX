@@ -2,8 +2,8 @@
 ******              RFSim99 Schematic File         ********
 ***********************************************************
 mmdB{
-max= 1.00000000000000E+0001
-min=-4.00000000000000E+0001
+max= 2.00000000000000E+0001
+min=-1.00000000000000E+0002
 }
 mmLin{
 max= 1.00000000000000E+0000
@@ -20,11 +20,11 @@ crot=0
 position.x=0
 position.y=0
 selected=FALSE
-value[1]={nom= 3.30000000000000E-0010; mintol= 2.00000000000000E+0000; maxtol=-2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
+value[1]={nom= 6.80000000000000E-0010; mintol=-2.00000000000000E+0000; maxtol= 2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 2.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=0
 nodes[1].y=0
 nodes[2].x=0
@@ -41,11 +41,11 @@ crot=0
 position.x=0
 position.y=0
 selected=FALSE
-value[1]={nom= 6.80000000000000E-0007; mintol= 1.00000000000000E+0001; maxtol=-1.00000000000000E+0001; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
+value[1]={nom= 8.00000000000000E-0007; mintol=-5.00000000000000E+0000; maxtol= 5.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 5.00000000000000E+0001; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=0
 nodes[1].y=0
 nodes[2].x=0
@@ -203,7 +203,7 @@ nodes[4].x=0
 nodes[4].y=0
 }
 plotformat{
-value=1
+value=2
 }
 current2port{
 value=1
@@ -212,23 +212,23 @@ current1port{
 value=1
 }
 Xax{
-max= 1.50000000000000E+0007
-min= 6.80000000000000E+0005
+max= 1.40000000000000E+0007
+min= 5.00000000000000E+0006
 numpoints=100
 centspan=FALSE
 freqmode=2
 }
 Y1ax{
-min=-4.00000000000000E+0001
-max= 1.00000000000000E+0001
-measwhat=2
-tracetype=3
+min=-1.00000000000000E+0002
+max= 2.00000000000000E+0001
+measwhat=3
+tracetype=0
 }
 Y2ax{
-min=-4.00000000000000E+0001
-max= 1.00000000000000E+0001
+min=-1.00000000000000E+0002
+max= 2.00000000000000E+0001
 measwhat=1
-tracetype=3
+tracetype=0
 }
 polarS11mag{
 value= 1.00000000000000E+0000
@@ -246,7 +246,7 @@ polarmeaswhat{
 value=1
 }
 cursorpos{
-value=77
+value=28
 }
 circleson{
 value=FALSE
@@ -256,17 +256,17 @@ value=TRUE
 }
 drawdat{
 P1{
-pos.x=270
-pos.y=100
-node.x=1
+pos.x=130
+pos.y=310
+node.x=3
 node.y=-1
 crot=1
 Zo= 5.00000000000000E+0001
 selected=FALSE
 }
 P2{
-pos.x=630
-pos.y=100
+pos.x=950
+pos.y=310
 node.x=5
 node.y=-1
 crot=1
@@ -277,14 +277,14 @@ component{
 name=
 ctype=2
 crot=2
-position.x=330
-position.y=100
+position.x=390
+position.y=310
 selected=FALSE
-value[1]={nom= 1.00000000000000E-0009; mintol= 2.00000000000000E+0000; maxtol=-2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
+value[1]={nom= 2.70000000000000E-0010; mintol=-2.00000000000000E+0000; maxtol= 2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 2.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=1
 nodes[1].y=-1
 nodes[2].x=2
@@ -296,16 +296,37 @@ nodes[4].y=0
 }
 component{
 name=
+ctype=2
+crot=2
+position.x=210
+position.y=310
+selected=FALSE
+value[1]={nom= 6.80000000000000E-0010; mintol=-2.00000000000000E+0000; maxtol= 2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 2.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=3
+nodes[1].y=-1
+nodes[2].x=1
+nodes[2].y=-1
+nodes[3].x=0
+nodes[3].y=0
+nodes[4].x=0
+nodes[4].y=0
+}
+component{
+name=
 ctype=3
 crot=1
-position.x=370
-position.y=150
+position.x=510
+position.y=360
 selected=FALSE
-value[1]={nom= 1.00000000000000E-0006; mintol= 1.00000000000000E+0001; maxtol=-1.00000000000000E+0001; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
+value[1]={nom= 8.00000000000000E-0007; mintol=-5.00000000000000E+0000; maxtol= 5.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 5.00000000000000E+0001; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=2
 nodes[1].y=-1
 nodes[2].x=0
@@ -317,59 +338,17 @@ nodes[4].y=0
 }
 component{
 name=
-ctype=4
-crot=1
-position.x=370
-position.y=180
-selected=FALSE
-value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-nodes[1].x=0
-nodes[1].y=-1
-nodes[2].x=0
-nodes[2].y=0
-nodes[3].x=0
-nodes[3].y=0
-nodes[4].x=0
-nodes[4].y=0
-}
-component{
-name=
-ctype=2
-crot=2
-position.x=410
-position.y=100
-selected=FALSE
-value[1]={nom= 3.30000000000000E-0010; mintol= 2.00000000000000E+0000; maxtol=-2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
-nodes[1].x=2
-nodes[1].y=-1
-nodes[2].x=3
-nodes[2].y=-1
-nodes[3].x=0
-nodes[3].y=0
-nodes[4].x=0
-nodes[4].y=0
-}
-component{
-name=
 ctype=3
 crot=1
-position.x=450
-position.y=150
+position.x=300
+position.y=360
 selected=FALSE
-value[1]={nom= 6.80000000000000E-0007; mintol= 1.00000000000000E+0001; maxtol=-1.00000000000000E+0001; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
-nodes[1].x=3
+value[1]={nom= 9.00000000000000E-0007; mintol=-5.00000000000000E+0000; maxtol= 5.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 5.00000000000000E+0001; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=1
 nodes[1].y=-1
 nodes[2].x=0
 nodes[2].y=-1
@@ -380,38 +359,17 @@ nodes[4].y=0
 }
 component{
 name=
-ctype=4
-crot=1
-position.x=450
-position.y=180
-selected=FALSE
-value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-nodes[1].x=0
-nodes[1].y=-1
-nodes[2].x=0
-nodes[2].y=0
-nodes[3].x=0
-nodes[3].y=0
-nodes[4].x=0
-nodes[4].y=0
-}
-component{
-name=
 ctype=2
 crot=2
-position.x=490
-position.y=100
+position.x=600
+position.y=310
 selected=FALSE
-value[1]={nom= 3.30000000000000E-0010; mintol= 2.00000000000000E+0000; maxtol=-2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
-nodes[1].x=3
+value[1]={nom= 2.70000000000000E-0010; mintol=-2.00000000000000E+0000; maxtol= 2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 2.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=2
 nodes[1].y=-1
 nodes[2].x=4
 nodes[2].y=-1
@@ -424,14 +382,14 @@ component{
 name=
 ctype=3
 crot=1
-position.x=530
-position.y=150
+position.x=700
+position.y=360
 selected=FALSE
-value[1]={nom= 1.00000000000000E-0006; mintol= 1.00000000000000E+0001; maxtol=-1.00000000000000E+0001; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
+value[1]={nom= 9.00000000000000E-0007; mintol=-5.00000000000000E+0000; maxtol= 5.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 5.00000000000000E+0001; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=4
 nodes[1].y=-1
 nodes[2].x=0
@@ -443,16 +401,37 @@ nodes[4].y=0
 }
 component{
 name=
+ctype=2
+crot=2
+position.x=830
+position.y=310
+selected=FALSE
+value[1]={nom= 6.80000000000000E-0010; mintol=-2.00000000000000E+0000; maxtol= 2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[2]={nom= 2.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=4
+nodes[1].y=-1
+nodes[2].x=5
+nodes[2].y=-1
+nodes[3].x=0
+nodes[3].y=0
+nodes[4].x=0
+nodes[4].y=0
+}
+component{
+name=
 ctype=4
 crot=1
-position.x=530
-position.y=180
+position.x=510
+position.y=430
 selected=FALSE
-value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
+value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
 nodes[1].x=0
 nodes[1].y=-1
 nodes[2].x=0
@@ -464,135 +443,213 @@ nodes[4].y=0
 }
 component{
 name=
-ctype=2
-crot=2
-position.x=570
-position.y=100
+ctype=4
+crot=1
+position.x=300
+position.y=430
 selected=FALSE
-value[1]={nom= 1.00000000000000E-0009; mintol= 2.00000000000000E+0000; maxtol=-2.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[2]={nom= 1.00000000000000E+0002; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[3]={nom= 1.00000000000000E+0008; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[4]={nom= 1.00000000000000E+0009; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=TRUE; Tol%=TRUE; }
-value[5]={nom= 1.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=TRUE; }
-nodes[1].x=4
+value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=0
 nodes[1].y=-1
-nodes[2].x=5
-nodes[2].y=-1
+nodes[2].x=0
+nodes[2].y=0
 nodes[3].x=0
 nodes[3].y=0
 nodes[4].x=0
 nodes[4].y=0
 }
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=290
-start.y=100
-finish.x=310
-finish.y=100
+component{
+name=
+ctype=4
+crot=1
+position.x=700
+position.y=430
+selected=FALSE
+value[1]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[2]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[3]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[4]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+value[5]={nom= 0.00000000000000E+0000; mintol= 0.00000000000000E+0000; maxtol= 0.00000000000000E+0000; TolEn=FALSE; Tol%=FALSE; }
+nodes[1].x=0
+nodes[1].y=-1
+nodes[2].x=0
+nodes[2].y=0
+nodes[3].x=0
+nodes[3].y=0
+nodes[4].x=0
+nodes[4].y=0
+}
+text{
+pos.x=245
+pos.y=166
+size=14
+selected=FALSE
+text=LPF 7MHz 40M
+}
+text{
+pos.x=257
+pos.y=274
+size=8
+selected=FALSE
+text=T50-6 16.4 turns
+}
+text{
+pos.x=263
+pos.y=256
+size=8
+selected=FALSE
+text=T37-6 19 turns
+}
+text{
+pos.x=680
+pos.y=253
+size=8
+selected=FALSE
+text=T37-6 19 turns
+}
+text{
+pos.x=487
+pos.y=255
+size=8
+selected=FALSE
+text=T37-6 20 turns
+}
+text{
+pos.x=483
+pos.y=270
+size=8
+selected=FALSE
+text=T50-6 17.3 turns
+}
+text{
+pos.x=676
+pos.y=272
+size=8
+selected=FALSE
+text=T50-6 16.4 turns
 }
 short{
 startselected=FALSE
 finishselected=FALSE
-start.x=350
-start.y=100
-finish.x=370
-finish.y=100
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=370
-start.y=100
-finish.x=370
-finish.y=130
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=370
-start.y=100
-finish.x=390
-finish.y=100
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=430
-start.y=100
-finish.x=450
-finish.y=100
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=450
-start.y=100
-finish.x=450
-finish.y=130
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=450
-start.y=100
-finish.x=470
-finish.y=100
+start.x=580
+start.y=310
+finish.x=580
+finish.y=310
 }
 short{
 startselected=FALSE
 finishselected=FALSE
 start.x=510
-start.y=100
-finish.x=530
-finish.y=100
+start.y=380
+finish.x=510
+finish.y=420
 }
 short{
 startselected=FALSE
 finishselected=FALSE
-start.x=530
-start.y=100
-finish.x=530
-finish.y=130
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=530
-start.y=100
-finish.x=550
-finish.y=100
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=590
-start.y=100
-finish.x=610
-finish.y=100
-}
-short{
-startselected=FALSE
-finishselected=FALSE
-start.x=370
-start.y=170
+start.x=300
+start.y=310
 finish.x=370
-finish.y=170
+finish.y=310
 }
 short{
 startselected=FALSE
 finishselected=FALSE
-start.x=450
-start.y=170
-finish.x=450
-finish.y=170
+start.x=300
+start.y=340
+finish.x=300
+finish.y=310
 }
 short{
 startselected=FALSE
 finishselected=FALSE
-start.x=530
-start.y=170
-finish.x=530
-finish.y=170
+start.x=300
+start.y=380
+finish.x=300
+finish.y=420
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=700
+start.y=380
+finish.x=700
+finish.y=420
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=510
+start.y=310
+finish.x=580
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=510
+start.y=340
+finish.x=510
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=510
+start.y=310
+finish.x=410
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=700
+start.y=310
+finish.x=810
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=700
+start.y=340
+finish.x=700
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=700
+start.y=310
+finish.x=620
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=150
+start.y=310
+finish.x=190
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=230
+start.y=310
+finish.x=300
+finish.y=310
+}
+short{
+startselected=FALSE
+finishselected=FALSE
+start.x=850
+start.y=310
+finish.x=930
+finish.y=310
 }
 }

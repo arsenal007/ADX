@@ -364,6 +364,12 @@ K I2C Expander
 F http://www.nxp.com/documents/data_sheet/PCF8574_PCF8574A.pdf
 $ENDCMP
 #
+$CMP TIANBO-HJR-4102-L
+D TIANBO HJR-4102-L, Single Pole Relay, 5mm Pitch, 3A
+K Single Pole Relay
+F https://cdn-reichelt.de/documents/datenblatt/C300/DS_HJR4102E.pdf
+$ENDCMP
+#
 $CMP TL074
 D Quad Op amp. Mos
 K AmpliOp Mos
@@ -372,6 +378,11 @@ $ENDCMP
 $CMP TLC274
 D Quad Op amp. Mos
 K AmpliOp Mos
+$ENDCMP
+#
+$CMP Transformer_1P_1S
+D Transformer, single primary, single secondary
+K transformer coil magnet
 $ENDCMP
 #
 #End Doc Library

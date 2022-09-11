@@ -199,7 +199,7 @@ Wire Wire Line
 Wire Wire Line
 	6450 3450 6450 3750
 Wire Wire Line
-	6450 3750 7400 3750
+	6450 3750 7700 3750
 Wire Wire Line
 	6550 3300 8000 3300
 Wire Wire Line
@@ -422,4 +422,7 @@ F 3 "" H 8200 4250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8200 4250 8200 4200
+Text GLabel 7700 3750 2    60   Output ~ 0
+CLK2
+Connection ~ 7400 3750
 $EndSCHEMATC

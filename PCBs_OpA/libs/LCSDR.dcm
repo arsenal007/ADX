@@ -380,4 +380,14 @@ D Quad Op amp. Mos
 K AmpliOp Mos
 $ENDCMP
 #
+$CMP Transformer_1P_1S
+D Transformer, single primary, single secondary
+K transformer coil magnet
+$ENDCMP
+#
+$CMP Transformer_1_4
+D Transformer, single primary, single secondary
+K transformer coil magnet
+$ENDCMP
+#
 #End Doc Library
