@@ -1,8 +1,9 @@
 #include "CAT.hpp"
 #include <Arduino.h>
+#include "VFO_BFO.hpp"
 
 const int numChars = 15;
-volatile long freq = 0;
+
 
 
 char CATcmd[numChars] = {'0'};    // an array to store the received CAT data
@@ -68,36 +69,73 @@ void Command_SETFreqA()
   freq100Hz = CATcmd[10] - 48;
   freq10Hz = CATcmd[11] - 48;
   freq1Hz = CATcmd[12] - 48;
-
   Command_GETFreqA();               // now RSP with FA
-
-  //  Serial.print("FA");
-  //  Serial.print(freq10GHz);
-  //  Serial.print(freq1GHz);
-  //  Serial.print(freq100MHz);
-  //  Serial.print(freq10MHz);
-  //  Serial.print(freq1MHz);
-  //  Serial.print(freq100kHz);
-  //  Serial.print(freq10kHz);
-  //  Serial.print(freq1kHz);
-  //  Serial.print(freq100Hz);
-  //  Serial.print(freq10Hz);
-  //  Serial.print(freq1Hz);
-  //  Serial.print(";");
-  Serial.print(CalcFreq());
+  vfo( CalcFreq());
 }
+
+void Command_IF(void)
+{
+  Serial.print("IF");
+  Serial.print(freq10GHz);        // P1
+  Serial.print(freq1GHz);
+  Serial.print(freq100MHz);
+  Serial.print(freq10MHz);
+  Serial.print(freq1MHz);
+  Serial.print(freq100kHz);
+  Serial.print(freq10kHz);
+  Serial.print(freq1kHz);
+  Serial.print(freq100Hz);
+  Serial.print(freq10Hz);
+  Serial.print(freq1Hz);
+  Serial.print("00000");          // P2 Always five 0s
+  Serial.print("+0000");          // P3 RIT/XIT freq +/-9990
+  Serial.print(RIT);              // P4
+  Serial.print(XIT);              // P5
+  Serial.print("0");              // P6 Always 0
+  Serial.print(MEM1);             // P7
+  Serial.print(MEM2);
+  Serial.print(RX);               // P8
+  Serial.print(MODE);             // P9
+  Serial.print(VFO);              // P10  FR/FT 0=VFO
+  Serial.print(SCAN);             // P11
+  Serial.print(SIMPLEX);          // P12
+  Serial.print(CTCSS);            // P13
+  Serial.print(TONE1);            // P14
+  Serial.print(TONE2);
+  Serial.print("0");              // P15 Always 0
+  Serial.print(";");
+}
+
+void Command_ID(void)
+{
+  Serial.print("ID020;");
+}
+
+void Command_PS(void)
+{
+  Serial.print("PS1;");
+}
+
+void Command_AI(void)
+{
+  Serial.print("AI0;");
+}
+
+
+
 
 
 
 void analyseCATcmd( void )
 {
-  if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[2] == ';'))              // must be freq get command
+  // must be freq get command
+  if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[2] == ';'))
     Command_GETFreqA();
-
-  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[13] == ';'))        // must be freq set command
+  // must be freq set command
+  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[13] == ';'))
     Command_SETFreqA();
 
-  /*else if ((CATcmd[0] == 'I') && (CATcmd[1] == 'F') && (CATcmd[2] == ';'))
+  else if ((CATcmd[0] == 'I') && (CATcmd[1] == 'F') && (CATcmd[2] == ';'))
     Command_IF();
 
   else if ((CATcmd[0] == 'I') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
@@ -105,38 +143,37 @@ void analyseCATcmd( void )
 
   else if ((CATcmd[0] == 'P') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
     Command_PS();
-
-  else if ((CATcmd[0] == 'P') && (CATcmd[1] == 'S') && (CATcmd[2] == '1'))
-    Command_PS1();
-
   else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == ';'))
     Command_AI();
 
   else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == '0'))
-    Command_AI0();
+    Command_AI();
+  /*
+        else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
+        Command_MD();
 
-  else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
-    Command_MD();
+        else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
+        Command_RX();
 
-  else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
-    Command_RX();
+        else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
+        Command_TX();
 
-  else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
-    Command_TX();
+        else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == '1'))
+        Command_TX1();
 
-  else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == '1'))
-    Command_TX1();
-
-  else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
-    Command_RS();
-  else if ((CATcmd[0] == 'C') && (CATcmd[1] == '1') && (CATcmd[2] == ';'))
-    Command_C1();*/
+        else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
+        Command_RS();
+        else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'I') && (CATcmd[13] == ';'))
+        Command_FI();
+        else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'E') && (CATcmd[13] == ';'))
+        Command_FE();
+  */
 
   Serial.flush();       // Get ready for next command
   //delay(50);            // Needed to eliminate WSJT-X connection errors
 
 }
-}
+} // end anonymous namespace
 
 
 void CAT_recive_cmd(void)

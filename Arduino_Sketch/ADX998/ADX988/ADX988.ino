@@ -47,9 +47,14 @@
 // 8 - Power off ADX.
 
 //*******************************[ LIBRARIES ]*************************************************
-#include <si5351.h>
+
 #include "Wire.h"
 #include <EEPROM.h>
+#include "avr/wdt.h"
+// Project includes
+#include "CAT.hpp"
+#include "VFO_BFO.hpp"
+
 //*******************************[ VARIABLE DECLERATIONS ]*************************************
 uint32_t val;
 int temp;
@@ -61,7 +66,6 @@ unsigned long freq1;
 int32_t cal_factor;
 int TX_State = 0;
 
-unsigned long Cal_freq = 1000000UL; // Calibration Frequency: 1 Mhz = 1000000 Hz
 unsigned long F_FT8;
 unsigned long F_FT4;
 unsigned long F_JS8;
@@ -101,11 +105,12 @@ int Band2 = 30; // Band 2
 int Band3 = 20; // Band 3
 int Band4 = 17; // Band 4
 
-Si5351 si5351;
+
 
 //*************************************[ SETUP FUNCTION ]**************************************
 void setup()
 {
+  wdt_enable(WDTO_1S);
   Serial.begin(57600);
   // pinMode(UP, INPUT);
   // pinMode(DOWN, INPUT);
@@ -124,16 +129,12 @@ void setup()
 
   //------------------------------- SET SI5351 VFO -----------------------------------
   // The crystal load value needs to match in order to have an accurate calibration
-  si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);
-  si5351.set_correction(cal_factor, SI5351_PLL_INPUT_XO);
-  si5351.set_pll(SI5351_PLL_FIXED, SI5351_PLLA);
-  si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);// SET For Max Power
-  si5351.drive_strength(SI5351_CLK1, SI5351_DRIVE_2MA); // Set for reduced power for RX
-
-  if ( digitalRead(DOWN) == LOW ) {
-    Calibration();
-  }
-
+  vfo_init();
+  /*si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);
+    si5351.set_correction(cal_factor, SI5351_PLL_INPUT_XO);
+    si5351.set_pll(SI5351_PLL_FIXED, SI5351_PLLA);
+    si5351.drive_strength(SI5351_CLK0, SI5351_DRIVE_8MA);// SET For Max Power
+    si5351.drive_strength(SI5351_CLK1, SI5351_DRIVE_2MA); // Set for reduced power for RX*/
 
   TCCR1A = 0x00;
   TCCR1B = 0x01; // Timer1 Timer 16 MHz
@@ -142,7 +143,7 @@ void setup()
 
   pinMode(7, INPUT); //PD7 = AN1 = HiZ, PD6 = AN0 = 0
   digitalWrite(RX, LOW);
-  Mode_assign();
+  // Mode_assign();
 
 }
 
@@ -151,81 +152,10 @@ void setup()
 //***************************[ Main LOOP Function ]**************************
 void loop()
 {
-
-  UP_State = digitalRead(UP);
-  DOWN_State = digitalRead(DOWN);
-
-
-  if ((UP_State == LOW) && (DOWN_State == LOW) && (TX_State == 0)) {
-    delay(100);
-    UP_State = digitalRead(UP);
-    DOWN_State = digitalRead(DOWN);
-    if ((UP_State == LOW) && (DOWN_State == LOW) && (TX_State == 0)) {
-
-      Band_Select();
-
-    }
-  }
+  wdt_reset();
+  CAT_recive_cmd();
 
 
-
-  if ((UP_State == LOW) && (DOWN_State == HIGH) && (TX_State == 0)) {
-    delay(50);
-
-    UP_State = digitalRead(UP);
-    if ((UP_State == LOW) && (DOWN_State == HIGH) && (TX_State == 0)) {
-      mode = mode - 1;
-
-      if (mode < 1) {
-        mode = 4;
-      }
-
-
-
-      addr = 40;
-      EEPROM.put(addr, mode);
-      Mode_assign();
-
-    }
-  }
-
-  DOWN_State = digitalRead(DOWN);
-
-  if ((UP_State == HIGH) && (DOWN_State == LOW) && (TX_State == 0)) {
-    delay(50);
-
-    DOWN_State = digitalRead(DOWN);
-    if ((UP_State == HIGH) && (DOWN_State == LOW) && (TX_State == 0)) {
-      mode = mode + 1;
-
-      if (mode > 4) {
-        mode = 1;
-      }
-
-
-
-      addr = 40;
-      EEPROM.put(addr, mode);
-      Mode_assign();
-
-    }
-  }
-
-  TXSW_State = digitalRead(TXSW);
-
-  if ((TXSW_State == LOW) && (TX_State == 0)) {
-    delay(50);
-
-    TXSW_State = digitalRead(TXSW);
-    if ((TXSW_State == LOW) && (TX_State == 0)) {
-
-      Mode_assign();
-
-      ManualTX();
-
-    }
-
-  }
 
   unsigned int d1, d2;
   int FSK = 10;
@@ -264,13 +194,13 @@ void loop()
       if (codefreq < 350000) {
         if (FSKtx == 0) {
           TX_State = 1;
-          digitalWrite(TX, HIGH);
-          digitalWrite(RX, LOW);
+          // digitalWrite(TX, HIGH);
+          // digitalWrite(RX, LOW);
 
-          si5351.output_enable(SI5351_CLK1, 0);   //RX off
-          si5351.output_enable(SI5351_CLK0, 1);   // TX on
+          // si5351.output_enable(SI5351_CLK1, 0);   //RX off
+          // si5351.output_enable(SI5351_CLK0, 1);   // TX on
         }
-        si5351.set_freq((freq * 100 + codefreq), SI5351_CLK0);
+        // si5351.set_freq((freq * 100 + codefreq), SI5351_CLK0);
 
         FSKtx = 1;
       }
@@ -281,14 +211,12 @@ void loop()
   }
   digitalWrite(TX, 0);
 
-  si5351.output_enable(SI5351_CLK0, 0);   //TX off
-  si5351.set_freq(freq * 100ULL, SI5351_CLK1);
-  si5351.output_enable(SI5351_CLK1, 1);   //RX on
+  // si5351.output_enable(SI5351_CLK0, 0);   //TX off
+  // si5351.set_freq(freq * 100ULL, SI5351_CLK1);
+  // si5351.output_enable(SI5351_CLK1, 1);   //RX on
   TX_State = 0;
   digitalWrite(RX, HIGH);
   FSKtx = 0;
-
-
 }
 //*********************[ END OF MAIN LOOP FUNCTION ]*************************
 
@@ -509,10 +437,10 @@ void Band_assign() {
 
 
 //*******************************[ Manual TX FUNCTION ]********************************
-void ManualTX() {
+/*void ManualTX() {
 
   digitalWrite(RX, LOW);
-  si5351.output_enable(SI5351_CLK1, 0);   //RX off
+  // si5351.output_enable(SI5351_CLK1, 0);   //RX off
 
 
 TXON:
@@ -521,8 +449,8 @@ TXON:
 
 
   digitalWrite(TX, 1);
-  si5351.set_freq(freq1 * 100ULL, SI5351_CLK0);
-  si5351.output_enable(SI5351_CLK0, 1);   //TX on
+  // si5351.set_freq(freq1 * 100ULL, SI5351_CLK0);
+  // si5351.output_enable(SI5351_CLK0, 1);   //TX on
   TX_State = 1;
 
   if (TXSW_State == HIGH) {
@@ -539,16 +467,6 @@ EXIT_TX:
   si5351.output_enable(SI5351_CLK0, 0);   //TX off
   TX_State = 0;
 
-}
+}*/
 
 //********************************[ END OF Manual TX ]*********************************
-
-//******************************[ BAND SELECT Function]********************************
-void Band_Select() {
-
-  digitalWrite(TX, 1);
-  addr = 50;
-  EEPROM.get(addr, Band_slot);
-
-  digitalWrite(WSPR, LOW);
-  digitalWrite(JS8, LOW);
