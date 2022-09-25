@@ -7,8 +7,7 @@ const int numChars = 15;
 
 
 char CATcmd[numChars] = {'0'};    // an array to store the received CAT data
-int freq10GHz = 0;
-int freq1GHz = 0;
+int freq10GHz, freq1GHz = 0;
 int freq100MHz = 0;
 int freq10MHz = 1;
 int freq1MHz = 4;
@@ -19,7 +18,7 @@ int freq100Hz = 4;
 int freq10Hz = 5;
 int freq1Hz = 6;
 int RIT, XIT, MEM1, MEM2, RX, TX, VFO, SCAN, SIMPLEX, CTCSS, TONE1, TONE2 = 0;
-int MODE = 2;
+int8_t MODE = 2;
 
 
 namespace {
@@ -121,6 +120,26 @@ void Command_AI(void)
   Serial.print("AI0;");
 }
 
+void Command_MD(void)
+{
+  Serial.print("MD");
+  Serial.print(MODE);
+  Serial.print(";");
+}
+
+void Command_MD1(void)
+{
+  MODE = 1;
+  Command_MD();
+}
+
+
+void Command_MD2(void)
+{
+  MODE = 2;
+  Command_MD();
+}
+
 
 
 
@@ -128,18 +147,17 @@ void Command_AI(void)
 
 void analyseCATcmd( void )
 {
+  if ((CATcmd[0] == 'I') && (CATcmd[1] == 'F') && (CATcmd[2] == ';'))
+    Command_IF();
   // must be freq get command
-  if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[2] == ';'))
+  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[2] == ';'))
     Command_GETFreqA();
   // must be freq set command
   else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'A') && (CATcmd[13] == ';'))
     Command_SETFreqA();
 
-  else if ((CATcmd[0] == 'I') && (CATcmd[1] == 'F') && (CATcmd[2] == ';'))
-    Command_IF();
-
   else if ((CATcmd[0] == 'I') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
-    Command_ID();
+    Command_ID();                    // return ID Kenwood TS-480 [ID020;]
 
   else if ((CATcmd[0] == 'P') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
     Command_PS();
@@ -148,25 +166,29 @@ void analyseCATcmd( void )
 
   else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == '0'))
     Command_AI();
+
+  else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
+    Command_MD();
+  else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == '1') && (CATcmd[3] == ';'))
+    Command_MD1();
+  else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == '2') && (CATcmd[3] == ';'))
+    Command_MD2();
   /*
-        else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
-        Command_MD();
+          else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
+          Command_RX();
 
-        else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
-        Command_RX();
+          else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
+          Command_TX();
 
-        else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == ';'))
-        Command_TX();
+          else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == '1'))
+          Command_TX1();
 
-        else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == '1'))
-        Command_TX1();
-
-        else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
-        Command_RS();
-        else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'I') && (CATcmd[13] == ';'))
-        Command_FI();
-        else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'E') && (CATcmd[13] == ';'))
-        Command_FE();
+          else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
+          Command_RS();
+          else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'I') && (CATcmd[13] == ';'))
+          Command_FI();
+          else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'E') && (CATcmd[13] == ';'))
+          Command_FE();
   */
 
   Serial.flush();       // Get ready for next command
