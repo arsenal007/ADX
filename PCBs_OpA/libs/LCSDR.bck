@@ -385,4 +385,9 @@ D Transformer, single primary, single secondary
 K transformer coil magnet
 $ENDCMP
 #
+$CMP Transformer_1_4
+D Transformer, single primary, single secondary
+K transformer coil magnet
+$ENDCMP
+#
 #End Doc Library

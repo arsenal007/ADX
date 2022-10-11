@@ -54,6 +54,7 @@
 // Project includes
 #include "CAT.hpp"
 #include "VFO_BFO.hpp"
+#include "leds.h"
 
 //*******************************[ VARIABLE DECLERATIONS ]*************************************
 uint32_t val;
@@ -87,8 +88,8 @@ int Bdly = 250;
 #define FT4  11 //FT4 LED
 #define FT8 12 //FT8 LED
 
-#define RX  8 // RX SWITCH
-#define SI5351_REF 		25000000UL  //change this to the frequency of the crystal on your si5351’s PCB, usually 25 or 27 MHz
+#define RX  14 // RX SWITCH
+// #define SI5351_REF 		25000000UL  //change this to the frequency of the crystal on your si5351’s PCB, usually 25 or 27 MHz
 
 //**********************************[ BAND SELECT ]************************************************
 // ADX can support up to 4 bands on board. Those 4 bands needs to be assigned to Band1 ... Band4 from supported 6 bands.
@@ -100,18 +101,17 @@ int Bdly = 250;
 // Assign your prefered bands to B1,B2,B3 and B4
 // Supported Bands are: 80m, 40m, 30m, 20m,17m, 15m
 
-int Band1 = 40; // Band 1 // These are my default bands. Feel free to swap with yours
-int Band2 = 30; // Band 2
-int Band3 = 20; // Band 3
-int Band4 = 17; // Band 4
-
-
+#define VERSION 1
 
 //*************************************[ SETUP FUNCTION ]**************************************
 void setup()
 {
-  wdt_enable(WDTO_1S);
+
   Serial.begin(57600);
+  Serial.print("ADX988 ver. ");
+  Serial.print(VERSION);
+  Serial.print(";");
+
   // pinMode(UP, INPUT);
   // pinMode(DOWN, INPUT);
   // pinMode(TXSW, INPUT);
@@ -144,7 +144,8 @@ void setup()
   pinMode(7, INPUT); //PD7 = AN1 = HiZ, PD6 = AN0 = 0
   digitalWrite(RX, LOW);
   // Mode_assign();
-
+  LEDS::init();
+  wdt_enable(WDTO_1S);
 }
 
 //**************************[ END OF SETUP FUNCTION ]************************
@@ -154,9 +155,6 @@ void loop()
 {
   wdt_reset();
   CAT_recive_cmd();
-
-
-
   unsigned int d1, d2;
   int FSK = 10;
   int FSKtx = 0;
@@ -190,7 +188,7 @@ void loop()
     }
     d2 = ICR1;
     if (TCNT1 < 65000) {
-      unsigned long codefreq = 1600000000 / (d2 - d1);
+      unsigned long codefreq = 2000000000 / (d2 - d1);
       if (codefreq < 350000) {
         if (FSKtx == 0) {
           TX_State = 1;
@@ -443,7 +441,7 @@ void Band_assign() {
   // si5351.output_enable(SI5351_CLK1, 0);   //RX off
 
 
-TXON:
+  TXON:
 
   TXSW_State = digitalRead(TXSW);
 
@@ -462,11 +460,11 @@ TXON:
 
 
 
-EXIT_TX:
+  EXIT_TX:
   digitalWrite(TX, 0);
   si5351.output_enable(SI5351_CLK0, 0);   //TX off
   TX_State = 0;
 
-}*/
+  }*/
 
 //********************************[ END OF Manual TX ]*********************************
