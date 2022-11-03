@@ -1,11 +1,12 @@
 #pragma once
 
 
+
 // SET DESIRED Frequency
 void vfo_set_cal_frequency( unsigned long );
 
 // REAL frequency
-void vfo_set_cal_factor( unsigned long );
+void vfo_set_cal_factor( long );
 
 
 

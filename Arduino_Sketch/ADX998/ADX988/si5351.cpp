@@ -64,7 +64,6 @@ bool Si5351::init(uint8_t xtal_load_c, uint32_t xo_freq, int32_t corr)
 {
   // Start I2C comms
   Wire.begin();
-
   // Check for a device on the bus, bail out if it is not there
   Wire.beginTransmission(i2c_bus_addr);
   uint8_t reg_val;
@@ -74,10 +73,12 @@ bool Si5351::init(uint8_t xtal_load_c, uint32_t xo_freq, int32_t corr)
   {
     // Wait for SYS_INIT flag to be clear, indicating that device is ready
     uint8_t status_reg = 0;
+
     do
     {
       status_reg = si5351_read(SI5351_DEVICE_STATUS);
     } while (status_reg >> 7 == 1);
+
 
     // Set crystal load capacitance
     si5351_write(SI5351_CRYSTAL_LOAD, (xtal_load_c & SI5351_CRYSTAL_LOAD_MASK) | 0b00010010);
@@ -94,13 +95,12 @@ bool Si5351::init(uint8_t xtal_load_c, uint32_t xo_freq, int32_t corr)
 
     // Set the frequency calibration for the XO
     set_correction(corr, SI5351_PLL_INPUT_XO);
-
     reset();
-
     return true;
   }
   else
   {
+    Serial.print("9");
     return false;
   }
 }
@@ -174,6 +174,7 @@ void Si5351::reset(void)
     output_enable((enum si5351_clock)i, 0);
     clk_first_set[i] = false;
   }
+
 }
 
 /*

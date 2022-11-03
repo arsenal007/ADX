@@ -22,8 +22,6 @@ static void flash(void)
 
 }
 
-
-
 ISR(TIMER2_COMPA_vect)
 {
   count++;

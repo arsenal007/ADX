@@ -160,13 +160,20 @@ void Command_FI( void )
 }
 
 
-void Command_FE( void )
+void Command_FP( void )
 {
   Command2Freq();  // text -> vars
-  Command_GETFreq('E');
+  Command_GETFreq('P');
   vfo_set_cal_factor( CalcFreq() );
-
 }
+
+void Command_FM( void )
+{
+  Command2Freq();  // text -> vars
+  Command_GETFreq('M');
+  vfo_set_cal_factor( -CalcFreq() );
+}
+
 
 void analyseCATcmd( void )
 {
@@ -202,8 +209,11 @@ void analyseCATcmd( void )
     Command_TX();
   else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'I') && (CATcmd[13] == ';'))
     Command_FI();
-  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'E') && (CATcmd[13] == ';'))
-    Command_FE();
+  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'P') && (CATcmd[13] == ';'))
+    Command_FP();
+  else if ((CATcmd[0] == 'F') && (CATcmd[1] == 'M') && (CATcmd[13] == ';'))
+    Command_FM();
+
   /*
               else if ((CATcmd[0] == 'T') && (CATcmd[1] == 'X') && (CATcmd[2] == '1'))
               Command_TX1();

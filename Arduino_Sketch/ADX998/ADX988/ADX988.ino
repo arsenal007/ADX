@@ -106,7 +106,10 @@ int Bdly = 250;
 //*************************************[ SETUP FUNCTION ]**************************************
 void setup()
 {
-
+  {
+    MCUSR = 0;
+    wdt_disable();
+  }
   Serial.begin(57600);
   Serial.print("ADX988 ver. ");
   Serial.print(VERSION);
@@ -140,6 +143,7 @@ void setup()
   TCCR1B = 0x01; // Timer1 Timer 16 MHz
   TCCR1B = 0x81; // Timer1 Input Capture Noise Canceller
   ACSR |= (1 << ACIC); // Analog Comparator Capture Input
+
 
   pinMode(7, INPUT); //PD7 = AN1 = HiZ, PD6 = AN0 = 0
   digitalWrite(RX, LOW);
@@ -355,7 +359,7 @@ void Band_assign() {
   EEPROM.get(addr, Band_slot);
 
   if (Band_slot == 1) {
-    Band = Band1;
+    // Band = Band1;
 
     digitalWrite(WSPR, HIGH);
     delay(Bdly);
@@ -372,7 +376,7 @@ void Band_assign() {
   }
 
   if (Band_slot == 2) {
-    Band = Band2;
+    // Band = Band2;
 
     digitalWrite(JS8, HIGH);
     delay(Bdly);
@@ -389,7 +393,7 @@ void Band_assign() {
   }
 
   if (Band_slot == 3) {
-    Band = Band3;
+    // Band = Band3;
 
     digitalWrite(FT4, HIGH);
     delay(Bdly);
@@ -406,7 +410,7 @@ void Band_assign() {
   }
 
   if (Band_slot == 4) {
-    Band = Band4;
+    // Band = Band4;
 
     digitalWrite(FT8, HIGH);
     delay(Bdly);
