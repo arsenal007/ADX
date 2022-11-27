@@ -41,7 +41,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 9
-Title "UT3MK VFO"
+Title "ADX988"
 Date "2016-02-18"
 Rev "2.0-pre1"
 Comp ""

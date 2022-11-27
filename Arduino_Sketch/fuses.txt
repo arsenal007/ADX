@@ -1,0 +1,1 @@
+ avrdude -p m328p -c usbasp -U lfuse:w:0xff:m -U hfuse:w:0xd6:m -U efuse:w:0x05:m

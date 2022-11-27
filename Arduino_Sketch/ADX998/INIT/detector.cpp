@@ -13,7 +13,7 @@ bool  almost_same(unsigned long f) {
   if (diff < 0) diff = -diff;
   if (diff < 160 ) return true;
   return false;
-  }
+}
 }
 
 namespace DETECTOR {
@@ -23,6 +23,9 @@ void init( void ) {
   TCCR1A = 0x00;
   TCCR1B = 0x01; // Timer1 Timer 16 MHz
   TCCR1B = 0x81; // Timer1 Input Capture Noise Canceller
+  // reset ACME bit
+  // The pins AIN0 and AIN1 of the analog comparator module are externally connected to the IO pins PD6 and PD7.
+  ADCSRB &= ~(1 << ACME); 
   ACSR |= (1 << ACIC); // Analog Comparator Capture Input
   pinMode(7, INPUT); // PD7 = AN1 = HiZ
   pinMode(6, INPUT); // PD6 = AN0 = HiZ
@@ -35,7 +38,6 @@ void init( void ) {
 
   // digitalWrite (7, 1);
 }
-
 namespace FREQ {
 
 bool valid(void) {

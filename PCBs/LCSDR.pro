@@ -1,4 +1,4 @@
-update=24.08.2022 22:13:44
+update=27.11.2022 8:15:28
 version=1
 last_client=kicad
 [pcbnew]
@@ -76,3 +76,6 @@ LibName33=ftdi
 LibName34=Oscillators
 LibName35=BF998
 LibName36=relays
+LibName37=stm32
+LibName38=Interface_USB
+LibName39=C:/Users/Vasyl/kicad-lib-arduino/Arduino

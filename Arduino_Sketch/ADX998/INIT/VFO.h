@@ -1,14 +1,19 @@
-// leds library
-
-#ifndef LEDS_H
-#define LEDS_H
+#pragma once
 
 namespace VFO {
+void init(void);
 namespace SET {
-void crystal_freq(unsigned int value);
+void crystal_freq( unsigned int );
+void pll( unsigned int );
+void clk2( unsigned long );
+void correction( unsigned long );
 }
+void eeprom_erase(void);
+
 // Si5351 init data
 struct eeprom_data {
+  // i2c address
+  unsigned char address;
   // crystal frequency
   // in kHz needs to be multiplied by 1000
   // to convert in Hz
@@ -20,15 +25,12 @@ struct eeprom_data {
   unsigned int pll;
 
   // correction frequency
-  int32_t correction;
+  long correction;
 
 } __attribute__ ((__packed__));
 
-#define EEPROM_SIZE sizeof(eeprom_data)
-#define EEPROM_ADDRESS 0
+
+
 }
-
-
-
-
-#endif
+#define VFO_EEPROM_SIZE sizeof(::VFO::eeprom_data)
+#define VFO_EEPROM_ADDRESS 0

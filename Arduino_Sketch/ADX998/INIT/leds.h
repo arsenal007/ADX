@@ -5,8 +5,8 @@
 
 namespace LEDS {
 void init(void);
-void measure(void);
-void measure_over(void);
+void tx(void);
+void tx_over(void);
 }
 
 #endif

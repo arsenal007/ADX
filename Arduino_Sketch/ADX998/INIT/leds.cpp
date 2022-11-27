@@ -9,24 +9,26 @@
 #define LED_RED 17
 #define LED_WHITE 16
 
+#define BLINK_RED 0
+#define ON_WHITE 1
+
 static volatile byte count;
-static byte reload = 156/2;     // 156
-
-static bool flashed = true;
-static bool output = HIGH;
-
-static void flash(void)
-{
-  digitalWrite(LED_RED, output);
-  output = !output;
-
-}
+static byte reload = 156 / 4;   // 156
+static uint8_t state = BLINK_RED;
+static uint8_t red_output = HIGH;
 
 ISR(TIMER2_COMPA_vect)
 {
   count++;
   if ( 50 <= count ) {
-    if ( flashed ) flash();
+    switch (state) {
+      case (BLINK_RED):
+        {
+          digitalWrite(LED_RED, red_output);
+          red_output = !red_output;
+          break;
+        }
+    }
     count = 0;
   }
   OCR2A = reload;
@@ -48,17 +50,18 @@ void init( void ) {
   sei();
 }
 
-void measure( void ) {
+
+void set_state( uint8_t ) {
   digitalWrite(LED_WHITE, HIGH);
   digitalWrite(LED_RED, LOW);
-  reload = 156/4;
-  // flashed = false;
+  // reload = 156/4;
+  flashed = false;
 }
 
-void measure_over( void ) {
+void tx_over( void ) {
   digitalWrite(LED_WHITE, LOW);
   digitalWrite(LED_RED, ::output);
-  // flashed = true;
-  reload = 156/2;
+  flashed = true;
+  reload = 156 / 4;
 }
 }

@@ -35,6 +35,7 @@ LIBS:ftdi
 LIBS:Oscillators
 LIBS:BF998
 LIBS:relays
+LIBS:stm32
 LIBS:LCSDR-cache
 EELAYER 25 0
 EELAYER END
