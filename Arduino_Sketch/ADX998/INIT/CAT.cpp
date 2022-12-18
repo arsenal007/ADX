@@ -122,6 +122,10 @@ void Command_VP( void )
                  freq1MHz );
 }
 
+void Command_RST(void) {
+  delay(2000);
+}
+
 void analyseCATcmd( void )
 {
   if ((CATcmd[0] == 'V') && (CATcmd[1] == 'E') && (CATcmd[2] == ';'))
@@ -136,9 +140,9 @@ void analyseCATcmd( void )
     Command_VM();
   else if ((CATcmd[0] == 'V') && (CATcmd[1] == 'P') && (CATcmd[5] == ';'))
     Command_VP();
-  /*else if ((CATcmd[0] == 'P') && (CATcmd[1] == 'S') && (CATcmd[2] == ';'))
-    Command_PS();
-    else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == ';'))
+  else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == 'T') && (CATcmd[3] == ';'))
+    Command_RST();
+  /*  else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == ';'))
     Command_AI();
     else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == '0'))
     Command_AI();

@@ -213,7 +213,7 @@ value=1
 }
 Xax{
 max= 1.40000000000000E+0007
-min= 4.00000000000000E+0006
+min= 1.00000000000000E+0006
 numpoints=100
 centspan=FALSE
 freqmode=2
@@ -246,7 +246,7 @@ polarmeaswhat{
 value=1
 }
 cursorpos{
-value=1
+value=74
 }
 circleson{
 value=FALSE
