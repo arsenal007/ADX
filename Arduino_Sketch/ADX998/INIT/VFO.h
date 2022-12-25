@@ -2,13 +2,15 @@
 
 namespace VFO {
 void init(void);
+void save( void );
 namespace SET {
-void crystal_freq( unsigned int );
+void crystal( unsigned int );
 void pll( unsigned int );
 void clk2( unsigned long );
-void correction( unsigned long );
+void correction( volatile long );
 }
 void eeprom_erase(void);
+void crystal_setup(long);
 
 // Si5351 init data
 struct eeprom_data {
@@ -24,7 +26,6 @@ struct eeprom_data {
   //  necessary for buggy si5351 from China
   unsigned int pll;
 
-  // correction frequency
   long correction;
 
 } __attribute__ ((__packed__));

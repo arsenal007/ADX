@@ -6,147 +6,172 @@
 #define BUFFER_SIZE 20
 char CATcmd[BUFFER_SIZE] = {'0'};    // an array to store the received CAT data
 
-int8_t freq10GHz = 0;
-int8_t freq1GHz, freq100MHz, freq10MHz = 0;
-int8_t freq1MHz = 4;
-int8_t freq100kHz = 1;
-int8_t freq10kHz = 2;
-int8_t freq1kHz = 3;
-int8_t freq100Hz = 4;
-int8_t freq10Hz = 5;
-int8_t freq1Hz = 6;
+
+
+enum M : uint8_t {
+  F10GHz = 0,
+  F1GHz = 1,
+  F100MHz = 2,
+  F10MHz = 3,
+  F1MHz = 4,
+  F100kHz = 5,
+  F10kHz = 6,
+  F1kHz = 7,
+  F100Hz = 8,
+  F10Hz = 9,
+  F1Hz = 10,
+  FSIZE
+};
+
+unsigned char freq[ FSIZE ] = {0};
+
 
 
 
 namespace {
 void Command_GETFreq(char n)
 {
-  Serial.print("V");
+  Serial.print("U");
   Serial.print(n);
-  Serial.print(freq10GHz);
-  Serial.print(freq1GHz);
-  Serial.print(freq100MHz);
-  Serial.print(freq10MHz);
-  Serial.print(freq1MHz);
-  Serial.print(freq100kHz);
-  Serial.print(freq10kHz);
-  Serial.print(freq1kHz);
-  Serial.print(freq100Hz);
-  Serial.print(freq10Hz);
-  Serial.print(freq1Hz);
+  Serial.print(freq[F10GHz]);
+  Serial.print(freq[F1GHz]);
+  Serial.print(freq[F100MHz]);
+  Serial.print(freq[F10MHz]);
+  Serial.print(freq[F1MHz]);
+  Serial.print(freq[F100kHz]);
+  Serial.print(freq[F10kHz]);
+  Serial.print(freq[F1kHz]);
+  Serial.print(freq[F100Hz]);
+  Serial.print(freq[F10Hz]);
+  Serial.print(freq[F1Hz]);
   Serial.print(";");
 }
 
-long CalcFreq( void )
+unsigned long CalcFreq_UL( void )
+{
+
+  return (
+           (1000000000UL * freq[F1GHz]) +
+           (100000000UL * freq[F100MHz]) +
+           (10000000UL * freq[F10MHz]) +
+           (1000000UL * freq[F1MHz]) +
+           (100000UL * freq[F100kHz]) +
+           (10000UL * freq[F10kHz]) +
+           (1000UL * freq[F1kHz]) +
+           (100UL * freq[F100Hz]) +
+           (10UL * freq[F10Hz]) +
+           freq[F1Hz]
+         );
+}
+
+
+unsigned long long CalcFreq_ULL( void )
 {
   return (
-           (10000000000L * freq10GHz) +
-           (1000000000L * freq1GHz) +
-           (100000000L * freq100MHz) +
-           (10000000L * freq10MHz) +
-           (1000000L * freq1MHz) +
-           (100000L * freq100kHz) +
-           (10000L * freq10kHz) +
-           (1000L * freq1kHz) +
-           (100L * freq100Hz) +
-           (10L * freq10Hz) +
-           freq1Hz);
+           (10000000000ULL * freq[F10GHz]) +
+           (1000000000ULL * freq[F1GHz]) +
+           (100000000ULL * freq[F100MHz]) +
+           (10000000ULL * freq[F10MHz]) +
+           (1000000ULL * freq[F1MHz]) +
+           (100000ULL * freq[F100kHz]) +
+           (10000ULL * freq[F10kHz]) +
+           (1000ULL * freq[F1kHz]) +
+           (100ULL * freq[F100Hz]) +
+           (10ULL * freq[F10Hz]) +
+           freq[F1Hz]
+         );
 }
 
 
 void Command2Freq( void )
 {
-  freq10GHz = CATcmd[2] - 48;       // convert ASCII char to int equivalent. int 0 = ASCII 48;
-  freq1GHz = CATcmd[3] - 48;
-  freq100MHz = CATcmd[4] - 48;
-  freq10MHz = CATcmd[5] - 48;
-  freq1MHz = CATcmd[6] - 48;
-  freq100kHz = CATcmd[7] - 48;
-  freq10kHz = CATcmd[8] - 48;
-  freq1kHz = CATcmd[9] - 48;
-  freq100Hz = CATcmd[10] - 48;
-  freq10Hz = CATcmd[11] - 48;
-  freq1Hz = CATcmd[12] - 48;
+  freq[F10GHz] = CATcmd[2] - 48;       // convert ASCII char to int equivalent. int 0 = ASCII 48;
+  freq[F1GHz] = CATcmd[3] - 48;
+  freq[F100MHz] = CATcmd[4] - 48;
+  freq[F10MHz] = CATcmd[5] - 48;
+  freq[F1MHz] = CATcmd[6] - 48;
+  freq[F100kHz] = CATcmd[7] - 48;
+  freq[F10kHz] = CATcmd[8] - 48;
+  freq[F1kHz] = CATcmd[9] - 48;
+  freq[F100Hz] = CATcmd[10] - 48;
+  freq[F10Hz] = CATcmd[11] - 48;
+  freq[F1Hz] = CATcmd[12] - 48;
 }
 
-void Command_VO( void )
+void Command_UO( void )
 {
   Command2Freq();  // text -> vars
-  Command_GETFreq('A');               // now RSP with FA
-  VFO::SET::clk2( CalcFreq() );
+  Command_GETFreq('O');               // now RSP with FA
+  VFO::SET::clk2( CalcFreq_UL() );
 }
 
-void Command_VM( void )
+void Command_UC( void )
 {
-  Command2Freq();  // text -> vars
-  Command_GETFreq('A');               // now RSP with VA
-  VFO::SET::correction( CalcFreq() );
-}
-
-
-void Command_VC( void )
-{
-  freq10MHz = CATcmd[2] - 48;
-  freq1MHz = CATcmd[3] - 48;
-  freq100kHz = CATcmd[4] - 48;
-  freq10kHz = CATcmd[5] - 48;
-  freq1kHz = CATcmd[6] - 48;
-  Serial.print("VA");
-  Serial.print(freq10MHz);
-  Serial.print(freq1MHz);
-  Serial.print(freq100kHz);
-  Serial.print(freq10kHz);
-  Serial.print(freq1kHz);
+  freq[F10MHz] = CATcmd[2] - 48;
+  freq[F1MHz] = CATcmd[3] - 48;
+  freq[F100kHz] = CATcmd[4] - 48;
+  freq[F10kHz] = CATcmd[5] - 48;
+  freq[F1kHz] = CATcmd[6] - 48;
+  Serial.print("UC");
+  Serial.print(freq[F10MHz]);
+  Serial.print(freq[F1MHz]);
+  Serial.print(freq[F100kHz]);
+  Serial.print(freq[F10kHz]);
+  Serial.print(freq[F1kHz]);
   Serial.print(";");
-  VFO::SET::crystal_freq( (10000u * freq10MHz) +
-                          (1000u * freq1MHz) +
-                          (100u * freq100kHz) +
-                          (10u * freq10kHz) +
-                          freq1kHz );
+  VFO::SET::crystal(
+    (10000u * freq[F10MHz]) +
+    (1000u * freq[F1MHz]) +
+    100u * freq[F100kHz] +
+    10u * freq[F10kHz] +
+    freq[F1kHz]
+  );
 }
 
 
-void Command_VP( void )
+void Command_UK( void )
 {
-  freq100MHz = CATcmd[2] - 48;
-  freq10MHz = CATcmd[3] - 48;
-  freq1MHz = CATcmd[4] - 48;
-
-  Serial.print("VA");
-  Serial.print(freq100MHz);
-  Serial.print(freq10MHz);
-  Serial.print(freq1MHz);
-  Serial.print(";");
-  VFO::SET::pll( (100u * freq100MHz) +
-                 (10u * freq10MHz) +
-                 freq1MHz );
+  VFO::save();
 }
 
-void Command_RST(void) {
+void Command_UP( void )
+{
+  freq[F100MHz] = CATcmd[2] - 48;
+  freq[F10MHz] = CATcmd[3] - 48;
+  freq[F1MHz] = CATcmd[4] - 48;
+
+  Serial.print("UP");
+  Serial.print(freq[F100MHz]);
+  Serial.print(freq[F10MHz]);
+  Serial.print(freq[F1MHz]);
+  Serial.print(";");
+  VFO::SET::pll( (100u * freq[F100MHz]) +
+                 (10u * freq[F10MHz]) +
+                 freq[F1MHz] );
+}
+
+void Command_R(void) {
   delay(2000);
 }
 
 void analyseCATcmd( void )
 {
-  if ((CATcmd[0] == 'V') && (CATcmd[1] == 'E') && (CATcmd[2] == ';'))
+  if ((CATcmd[0] == 'R') && (CATcmd[1] == 'T') && (CATcmd[2] == ';'))
     ::VFO::eeprom_erase();
   // SET Crystal freq in kHz  VC27000;
-  else if ((CATcmd[0] == 'V') && (CATcmd[1] == 'C') && (CATcmd[7] == ';'))
-    Command_VC();
+  else if ((CATcmd[0] == 'U') && (CATcmd[1] == 'C') && (CATcmd[7] == ';'))
+    Command_UC();
+  // save correction
+  else if ((CATcmd[0] == 'U') && (CATcmd[1] == 'K') && (CATcmd[2] == ';'))
+    Command_UK();
   // must be freq set command
-  else if ((CATcmd[0] == 'V') && (CATcmd[1] == 'O') && (CATcmd[13] == ';'))
-    Command_VO();
-  else if ((CATcmd[0] == 'V') && (CATcmd[1] == 'M') && (CATcmd[13] == ';'))
-    Command_VM();
-  else if ((CATcmd[0] == 'V') && (CATcmd[1] == 'P') && (CATcmd[5] == ';'))
-    Command_VP();
-  else if ((CATcmd[0] == 'R') && (CATcmd[1] == 'S') && (CATcmd[2] == 'T') && (CATcmd[3] == ';'))
-    Command_RST();
-  /*  else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == ';'))
-    Command_AI();
-    else if ((CATcmd[0] == 'A') && (CATcmd[1] == 'I') && (CATcmd[2] == '0'))
-    Command_AI();
-    // request Mode: LSB-1, USB-2, CW-3
+  else if ((CATcmd[0] == 'U') && (CATcmd[1] == 'O') && (CATcmd[13] == ';'))
+    Command_UO();
+  else if ((CATcmd[0] == 'U') && (CATcmd[1] == 'P') && (CATcmd[5] == ';'))
+    Command_UP();
+  else if ((CATcmd[0] == 'R') && (CATcmd[1] == ';'))
+    Command_R();
+  /*// request Mode: LSB-1, USB-2, CW-3
     else if ((CATcmd[0] == 'M') && (CATcmd[1] == 'D') && (CATcmd[2] == ';'))
     Command_MD();
     // setup Mode: LSB-1, USB-2, CW-3
@@ -178,6 +203,28 @@ void analyseCATcmd( void )
   // delay(50);            // Needed to eliminate WSJT-X connection errors
 
 }
+
+void crystal_setup(char c) {
+  switch (c)
+  {
+    case 'q': ::VFO::SET::correction(-1); break;
+    case 'w': ::VFO::SET::correction(-10); break;
+    case 'e': ::VFO::SET::correction(-100); break;
+    case 'f': ::VFO::SET::correction(-1000); break;
+    case 'g': ::VFO::SET::correction(-10000); break;
+    case 'h': ::VFO::SET::correction(-100000); break;
+    case 'j': ::VFO::SET::correction(-1000000); break;
+    case 'a': ::VFO::SET::correction(1); break;
+    case 's': ::VFO::SET::correction(10); break;
+    case 'd': ::VFO::SET::correction(100); break;
+    case 'v': ::VFO::SET::correction(1000); break;
+    case 'b': ::VFO::SET::correction(10000); break;
+    case 'n': ::VFO::SET::correction(100000); break;
+    case 'm': ::VFO::SET::correction(1000000); break;
+    default:
+      ;
+  }
+}
 } // end anonymous namespace
 
 
@@ -190,6 +237,8 @@ void CAT_recive_cmd(void)
   while ( (Serial.available() > 0) )
   {
     data = Serial.read();
+
+    ::crystal_setup(data);
 
     if (data != endMarker)
     {

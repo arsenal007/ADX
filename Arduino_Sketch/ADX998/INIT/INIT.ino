@@ -5,7 +5,9 @@
 #include "avr/wdt.h"
 
 
-#define VERSION 1
+#define VERSION 2
+
+// 162010
 
 void setup() {
   // put your setup code here, to run once:
@@ -20,6 +22,14 @@ void setup() {
   ::DETECTOR::init();
   ::LEDS::init();
   ::VFO::init();
+  Serial.println(F("RT; // Reset EEPROM setting to default values and reboot"));
+  Serial.println(F("UCXXXXX; // Set Si5351A Crystal frequncy in kHz (Example: UC27000;)"));
+  Serial.println(F("UPXXX; // Set Si5351A PLL frequncy in kHz (Example: UP900;)"));
+  Serial.println(F("UK; // Save Correction and reboot"));
+  Serial.println(F("   Up:    q   w   e   f   g   h   j"));
+  Serial.println(F(" Down:    a   s   d   v   b   n   m"));
+  
+  Serial.println(F("   Hz:  0.01 0.1  1   10  100 1K  10k"));
   wdt_enable(WDTO_1S);
 }
 
