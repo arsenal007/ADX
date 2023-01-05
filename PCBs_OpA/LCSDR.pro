@@ -1,4 +1,4 @@
-update=24.08.2022 22:13:44
+update=26.12.2022 18:58:53
 version=1
 last_client=kicad
 [pcbnew]
@@ -76,3 +76,4 @@ LibName33=ftdi
 LibName34=Oscillators
 LibName35=BF998
 LibName36=relays
+LibName37=libs/MCU_Microchip_ATtiny

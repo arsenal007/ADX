@@ -23,8 +23,8 @@ void setup() {
   ::LEDS::init();
   ::VFO::init();
   Serial.println(F("RT; // Reset EEPROM setting to default values and reboot"));
-  Serial.println(F("UCXXXXX; // Set Si5351A Crystal frequncy in kHz (Example: UC27000;)"));
-  Serial.println(F("UPXXX; // Set Si5351A PLL frequncy in kHz (Example: UP900;)"));
+  Serial.println(F("UCXXXXX; // Set Si5351A Crystal frequncy in kHz (Example: UC27000; for 27000kHz)"));
+  Serial.println(F("UPXXX; // Set Si5351A PLL frequncy in MHz (Example: UP900; for 900Mhz)"));
   Serial.println(F("UK; // Save Correction and reboot"));
   Serial.println(F("   Up:    q   w   e   f   g   h   j"));
   Serial.println(F(" Down:    a   s   d   v   b   n   m"));
