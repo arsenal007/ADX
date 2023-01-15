@@ -1,4 +1,4 @@
-update=27.11.2022 8:15:28
+update=05.01.2023 9:48:54
 version=1
 last_client=kicad
 [pcbnew]
@@ -79,3 +79,4 @@ LibName36=relays
 LibName37=stm32
 LibName38=Interface_USB
 LibName39=C:/Users/Vasyl/kicad-lib-arduino/Arduino
+LibName40=libs/MCU_Microchip_ATtiny
