@@ -26,12 +26,19 @@ struct eeprom_data {
   //  necessary for buggy si5351 from China
   unsigned int pll;
 
+
   long correction;
+
+  unsigned char f_index;
+
+  unsigned long freqs[2];
 
 } __attribute__ ((__packed__));
 
 
 
 }
+
+#define EEPROM_ADDRESS 0x50 // AT24C01 default address
 #define VFO_EEPROM_SIZE sizeof(::VFO::eeprom_data)
 #define VFO_EEPROM_ADDRESS 0

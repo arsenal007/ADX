@@ -6,18 +6,23 @@
 #include <avr/pgmspace.h>
 #include "leds.h"
 
-#define LED_RED 17
+
+#define LED_RED LED_BUILTIN
+// #define LED_RED 17
 #define LED_WHITE 16
+
+// #define LED_RED 5
 
 #define BLINK 1
 #define ON 2
 #define OFF 3
 
-static volatile byte count;
+
 static byte reload = 156 / 4;   // 156
 static uint8_t state = BLINK;
 static uint8_t pin = LED_RED;
 static uint8_t output = HIGH;
+static volatile byte count;
 
 ISR(TIMER2_COMPA_vect)
 {

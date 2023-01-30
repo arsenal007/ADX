@@ -151,7 +151,7 @@ void Command_UP( void )
 }
 
 void Command_R(void) {
-  delay(2000);
+  delay(4000);
 }
 
 void analyseCATcmd( void )

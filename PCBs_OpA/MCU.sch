@@ -51,61 +51,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Crystal Y2
-U 1 1 6253E0F5
-P -1800 4600
-F 0 "Y2" H -1800 4750 50  0000 C CNN
-F 1 "20Mhz" H -1800 4450 50  0000 C CNN
-F 2 "Crystals:Crystal_HC49-U_Vertical" H -1800 4600 50  0001 C CNN
-F 3 "" H -1800 4600 50  0001 C CNN
-	1    -1800 4600
-	1    0    0    -1  
-$EndComp
-$Comp
-L C_Small C19
-U 1 1 6253E0FC
-P -2050 4950
-F 0 "C19" H -1950 5000 50  0000 L CNN
-F 1 "22pF" H -1950 4900 50  0000 L CNN
-F 2 "LCSDR:C_1206_0603" H -2050 4950 50  0001 C CNN
-F 3 "" H -2050 4950 50  0001 C CNN
-	1    -2050 4950
-	1    0    0    -1  
-$EndComp
-$Comp
-L C_Small C20
-U 1 1 6253E103
-P -1550 4950
-F 0 "C20" H -1450 5000 50  0000 L CNN
-F 1 "22pF" H -1450 4900 50  0000 L CNN
-F 2 "LCSDR:C_1206_0603" H -1550 4950 50  0001 C CNN
-F 3 "" H -1550 4950 50  0001 C CNN
-	1    -1550 4950
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR027
-U 1 1 6253E10A
-P -2050 5100
-F 0 "#PWR027" H -2050 4850 50  0001 C CNN
-F 1 "GND" H -2050 4950 50  0001 C CNN
-F 2 "" H -2050 5100 50  0001 C CNN
-F 3 "" H -2050 5100 50  0001 C CNN
-	1    -2050 5100
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR028
-U 1 1 6253E110
-P -1550 5100
-F 0 "#PWR028" H -1550 4850 50  0001 C CNN
-F 1 "GND" H -1550 4950 50  0001 C CNN
-F 2 "" H -1550 5100 50  0001 C CNN
-F 3 "" H -1550 5100 50  0001 C CNN
-	1    -1550 5100
-	1    0    0    -1  
-$EndComp
 Text GLabel 6700 2900 2    60   BiDi ~ 0
 SDA
 Text GLabel 7050 3000 2    60   Output ~ 0
@@ -159,10 +104,6 @@ Wire Wire Line
 	8000 2550 8000 2350
 Connection ~ 8000 2350
 Connection ~ 8550 2350
-Wire Wire Line
-	-2050 5100 -2050 5050
-Wire Wire Line
-	-1550 5100 -1550 5050
 Wire Wire Line
 	4150 2900 6700 2900
 Wire Wire Line
@@ -540,8 +481,6 @@ F 3 "" H 900 4700 50  0001 C CNN
 	1    900  4700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	-2050 4300 -450 4300
 Text GLabel 2700 4800 2    60   Input ~ 0
 MIC
 Wire Wire Line
@@ -583,11 +522,6 @@ SDA
 Wire Wire Line
 	2200 4000 2500 4000
 Wire Wire Line
-	-1650 4600 -1550 4600
-Connection ~ -1550 4600
-Wire Wire Line
-	-2050 4300 -2050 4850
-Wire Wire Line
 	-850 4750 -850 4900
 $Comp
 L C_Small C15
@@ -616,13 +550,6 @@ Wire Wire Line
 Connection ~ -850 4850
 Wire Wire Line
 	-850 4850 -450 4850
-Wire Wire Line
-	-1550 4500 -1550 4850
-Wire Wire Line
-	-1550 4500 -450 4500
-Wire Wire Line
-	-1950 4600 -2050 4600
-Connection ~ -2050 4600
 Wire Wire Line
 	2200 4200 2700 4200
 Wire Wire Line
