@@ -7,11 +7,12 @@
 #include "leds.h"
 
 
-#define LED_RED LED_BUILTIN
+// #define LED_RED LED_BUILTIN
 // #define LED_RED 17
-#define LED_WHITE 16
+// #define LED_WHITE 16
 
-// #define LED_RED 5
+#define LED_WHITE 5
+#define LED_RED 4
 
 #define BLINK 1
 #define ON 2

@@ -20,6 +20,18 @@ void setup() {
     wdt_disable();
   }
   Serial.begin(57600);
+  
+  // the MCU Frequency is described in ~\Arduino Sketches\hardware\LGT\avr\boards.txt
+  // on this line: lardu_328x.build.f_cpu=32000000L
+  Serial.print("F_CPU value: "); 
+  Serial.println(F_CPU);
+  Serial.print("Clock cycles per µsecond: "); 
+  Serial.println(clockCyclesPerMicrosecond());
+
+  uint32_t guid = *(uint32_t*)&GUID0 ;
+  Serial.print("GUID of this device: "); 
+  Serial.println(guid, HEX);
+  
   Serial.print("ADX988 INIT ver. ");
   Serial.print(VERSION);
   Serial.print("\n");
